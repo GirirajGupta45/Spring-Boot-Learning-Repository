@@ -35,6 +35,7 @@
         <module>03-custom-application-properties-demo</module>
         <module>04-dependency-injection-demo</module>
         <module>05-component-scanning-demo</module>
+        <module>06-qualifier-primary-demo</module>
     </modules>
 
 </project>
