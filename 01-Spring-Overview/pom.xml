@@ -37,6 +37,7 @@
         <module>05-component-scanning-demo</module>
         <module>06-qualifier-primary-demo</module>
         <module>07-lazy-initialization-demo</module>
+        <module>08-bean-config-demo</module>
     </modules>
 
 </project>
