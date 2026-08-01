@@ -42,7 +42,6 @@
 
     <modules>
         <module>01-cruddemo</module>
-        <module>02-demo</module>
     </modules>
 
 </project>

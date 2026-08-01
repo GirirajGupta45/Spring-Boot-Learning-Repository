@@ -4,10 +4,9 @@ import com.gaurav.entities.Student;
 import com.gaurav.student_dao.StudentDAO;
 import com.gaurav.student_dao.StudentDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/student-tracker")
@@ -20,9 +19,14 @@ public class StudentController {
     }
 
 
-    @PostMapping("/student-details")
+    @PostMapping("/save-student")
     public void studentValues(@RequestBody Student student) {
         studentDAOImpl.save(student);
+    }
+
+    @GetMapping("/get-student-details/{id}")
+    String getStudentDetails(@PathVariable int id){
+        return studentDAOImpl.findById(id);
     }
 }
 
