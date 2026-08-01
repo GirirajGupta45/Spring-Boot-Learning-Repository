@@ -18,13 +18,44 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     @Transactional
-    public void save(Student student) {
+    public String save(Student student) {
         entityManager.persist(student);
+        return "Student registered successfully!!!";
     }
 
     @Override
     public String findById(int id) {
-        return entityManager.find(Student.class, id).toString();
+       Student student= entityManager.find(Student.class, id);
+       if(student!=null){
+           return student.toString();
+       }
+       else {
+           return "Student not found!!!";
+       }
+    }
+
+    @Override
+    @Transactional
+    public String deleteById(int id) {
+        Student student = entityManager.find(Student.class, id);
+        if(student!=null){
+            entityManager.remove(student);
+            return "Student deleted successfully!!!";
+        }else{
+            return "Student not found!!!";
+        }
+    }
+
+    @Override
+    @Transactional
+    public String updateStudent(Student student) {
+        try{
+            entityManager.merge(student);
+            return "Student updated successfully!!!";
+        }
+       catch(Exception e){
+        return "Student not found!!!";
+       }
     }
 
 }

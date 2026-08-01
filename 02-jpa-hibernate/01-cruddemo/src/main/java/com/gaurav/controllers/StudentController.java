@@ -20,13 +20,24 @@ public class StudentController {
 
 
     @PostMapping("/save-student")
-    public void studentValues(@RequestBody Student student) {
-        studentDAOImpl.save(student);
+    public String studentValues(@RequestBody Student student) {
+        return studentDAOImpl.save(student);
     }
 
     @GetMapping("/get-student-details/{id}")
     String getStudentDetails(@PathVariable int id){
         return studentDAOImpl.findById(id);
     }
+
+    @PostMapping("/remove-student/{id}")
+    public String deleteStudent(@PathVariable int id){
+        return studentDAOImpl.deleteById(id);
+    }
+
+    @PutMapping("/update-Student-details")
+    public String updateStudentDetails(@RequestBody Student student){
+      return studentDAOImpl.updateStudent(student);
+    }
+
 }
 
