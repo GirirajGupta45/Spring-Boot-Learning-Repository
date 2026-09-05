@@ -27,12 +27,13 @@ public class StudentControllerDemo {
         return studentDAO.findById(id);
     }
 
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException e){
-        StudentErrorResponse error = new StudentErrorResponse();
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setMessage(e.getMessage());
-        error.setTimestamp(System.currentTimeMillis());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
+    // This Exception Handler is moved to StudentRestExceptionHandler for Global Exeption Handling
+//    @ExceptionHandler
+//    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException e){
+//        StudentErrorResponse error = new StudentErrorResponse();
+//        error.setStatus(HttpStatus.NOT_FOUND.value());
+//        error.setMessage(e.getMessage());
+//        error.setTimestamp(System.currentTimeMillis());
+//        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+//    }
 }
