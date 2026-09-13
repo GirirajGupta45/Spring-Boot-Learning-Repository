@@ -3,9 +3,7 @@ package com.gaurav.controller;
 import com.gaurav.entity.Employee;
 import com.gaurav.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +22,24 @@ public class EmployeeController {
     public List<Employee> finaAllEmployees(){
         List<Employee> employees = employeeService.findAllEmployees();
         return employees;
+    }
+
+    @PostMapping("/employees")
+    String saveEmployee(@RequestBody Employee employee){
+        return employeeService.saveEmployee(employee);
+    }
+
+    @GetMapping("employees/{id}")
+    public Employee finaEmployeeById(@PathVariable int id){
+       return employeeService.findEmployeeById(id);
+    }
+    @PatchMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        return employeeService.updateEmployee(employee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public void deleteEmployeeById(@PathVariable int id){
+        employeeService.deleteEmployeeById(id);
     }
 }
